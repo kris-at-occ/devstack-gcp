@@ -23,9 +23,9 @@ enable_plugin heat https://git.openstack.org/openstack/heat stable/ocata
 enable_service s-proxy s-object s-container s-account
 SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
 SWIFT_REPLICAS=1
-SWIFT_DATA_DIR=$DEST/data/swift
+SWIFT_DATA_DIR=\$DEST/data/swift
 
-[[post-config|$NOVA_CONF]]
+[[post-config|\$NOVA_CONF]]
 [vnc]
 novncproxy_base_url="http:///$externalip:6080/vnc_auto.html"
 EOF
