@@ -27,7 +27,7 @@ SWIFT_DATA_DIR=\$DEST/data/swift
 
 [[post-config|\$NOVA_CONF]]
 [vnc]
-novncproxy_base_url="http:///$externalip:6080/vnc_auto.html"
+novncproxy_base_url="http://$externalip:6080/vnc_auto.html"
 EOF
 
 ./stack.sh
