@@ -24,6 +24,7 @@ enable_service h-eng h-api h-api-cfn h-api-cw
 SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
 SWIFT_REPLICAS=1
 SWIFT_DATA_DIR=$DEST/data/swift
+
 EOF
 
 ./stack.sh
