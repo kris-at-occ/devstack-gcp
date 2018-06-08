@@ -8,6 +8,8 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y crudini git
 
 git clone https://git.openstack.org/openstack-dev/devstack -b stable/newton
 
+sed -i -e 's/pip_version<6/pip_version>0/g' devstack/inc/python
+
 cd devstack
 
 # Prepare 'local.conf'
@@ -18,6 +20,7 @@ DATABASE_PASSWORD=openstack
 RABBIT_PASSWORD=openstack
 SERVICE_PASSWORD=openstack
 enable_service s-proxy s-object s-container s-account
+enable_service h-eng h-api h-api-cfn h-api-cw
 SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
 SWIFT_REPLICAS=1
 SWIFT_DATA_DIR=$DEST/data/swift
