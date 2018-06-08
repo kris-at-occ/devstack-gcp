@@ -13,7 +13,7 @@ In GCP Console go to VPC Network -> Firewall rules
 In Compute Engine Create a new VM
 - Name: devstack
 - Region: most suitable
-- Machine type: 2 vCPUs n1-standard-2
+- Machine type: 2 vCPUs 7.5 GB memory (n1-standard-2) or 2 vCPUs 13 GB memory (n1-highmem-2)
 - Boot disk: Ubuntu 16.04, 30GB disk (Standard or SSD)
 - Firewall: Allow HTTP and HTTPS traffic
 - SSH Key (if you like)
@@ -29,5 +29,7 @@ sh devstack-gcp/devstack-pike.sh
 Run script to install Devstack with latest master:
 
 sh devstack-gcp/devstack-latest.sh
+
+The script displays Horizon Dashboard URL in the very last line of the output.
 
 Enjoy!
