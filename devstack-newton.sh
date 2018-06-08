@@ -8,7 +8,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y crudini git
 
 git clone https://git.openstack.org/openstack-dev/devstack -b stable/newton
 
-sed -i -e 's/pip_version<6/pip_version>0/g' devstack/inc/python
+sed -i -e 's/pip_version<6/pip_version<0/g' devstack/inc/python
 externalip=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
 
 cd devstack
