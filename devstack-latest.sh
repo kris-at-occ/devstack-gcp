@@ -32,6 +32,6 @@ SWIFT_DATA_DIR=$DEST/data/swift
 novncproxy_base_url=$novncproxy_base_url
 EOF
 
-$ ./stack.sh
+./stack.sh
 
 echo "You can access Horizon Dashboard at External IP address: http://$externalip/dashboard"
