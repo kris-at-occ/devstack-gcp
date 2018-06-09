@@ -10,7 +10,6 @@ externalip=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/c
 # Clone devstack repo
 
 git clone https://git.openstack.org/openstack-dev/devstack -b stable/ocata
-
 cd devstack
 
 # Prepare 'local.conf'
