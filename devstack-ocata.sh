@@ -2,10 +2,11 @@
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get -y update
 DEBIAN_FRONTEND=noninteractive sudo apt-get upgrade -y
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y crudini git
 
+# Get External IP of this GCP Instance
 
 externalip=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
+
 # Clone devstack repo
 
 git clone https://git.openstack.org/openstack-dev/devstack -b stable/ocata
@@ -13,28 +14,31 @@ git clone https://git.openstack.org/openstack-dev/devstack -b stable/ocata
 cd devstack
 
 # Prepare 'local.conf'
+
 cat <<- EOF > local.conf
 [[local|localrc]]
+# Set basic passwords
 ADMIN_PASSWORD=openstack
 DATABASE_PASSWORD=openstack
 RABBIT_PASSWORD=openstack
 SERVICE_PASSWORD=openstack
+# Enable Heat
 enable_plugin heat https://git.openstack.org/openstack/heat stable/ocata
+# Enable Swift
 enable_service s-proxy s-object s-container s-account
-enable_service c-bak
 SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
 SWIFT_REPLICAS=1
 SWIFT_DATA_DIR=\$DEST/data/swift
-
+# Enable Cinder Backup
+enable_service c-bak
+# Configure Nova novnc Proxy Base URL with External IP of this Instance
 [[post-config|\$NOVA_CONF]]
 [vnc]
 novncproxy_base_url="http://$externalip:6080/vnc_auto.html"
 EOF
 
-./stack.sh
+# Run stack script
 
-#externalip=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
-#sudo crudini --set /etc/nova/nova-cpu.conf vnc novncproxy_base_url "http://$externalip:6080/vnc_auto.html"
-#sudo systemctl restart devstack@n-cpu.service
+./stack.sh
 
 echo "You can access Horizon Dashboard at External IP address: http://$externalip/dashboard"
