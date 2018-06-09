@@ -41,4 +41,9 @@ EOF
 
 ./stack.sh
 
+# Enable Cinder Backup Dashboard in Horizon
+
+sudo sed -i -e 's/'\''enable_backup'\'': False,/'\''enable_backup'\'': True,/g' /opt/stack/horizon/openstack_dashboard/local/local_settings.py
+sudo service apache2 reload
+
 echo "You can access Horizon Dashboard at External IP address: http://$externalip/dashboard"
