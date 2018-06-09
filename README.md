@@ -22,9 +22,9 @@ Open SSH console and clone this repo:
 
 git clone https://github.com/kris-at-occ/devstack-gcp
 
-Run script to install Devstack with Ocata:
+Run script to install Devstack COA Lab:
 
-sh devstack-gcp/devstack-Ocata.sh
+sh devstack-gcp/devstack-coa.sh
 
 Run script to install Devstack with Pike:
 
