@@ -1,3 +1,17 @@
+#! /bin/sh
+
+# Check for required environment variables
+
+if [ -z "$externalip" ]; then
+  echo "Please set \$externalip"
+  exit 1
+fi
+
+if [ -z "$servicehost" ]; then
+  echo "Please set \$servicehost"
+  exit 1
+fi
+
 # Prepare the system
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get -y update
