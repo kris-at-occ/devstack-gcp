@@ -12,6 +12,14 @@ if [ -z "$servicehost" ]; then
   exit 1
 fi
 
+echo "Test ping controller"
+ping -c 1 controller
+
+if [ $? -ne 0 ]; then
+  echo "Please make sure controller is defined in /etc/hosts and connectivity is enabled"
+  exit 1
+fi
+
 # Prepare the system
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get -y update
