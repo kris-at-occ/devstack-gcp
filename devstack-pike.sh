@@ -2,7 +2,6 @@
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get -y update
 DEBIAN_FRONTEND=noninteractive sudo apt-get upgrade -y
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git
 
 # Get External IP of this Instance
 externalip=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
