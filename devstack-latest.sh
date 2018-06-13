@@ -40,4 +40,24 @@ EOF
 sudo sed -i -e 's/'\''enable_backup'\'': False,/'\''enable_backup'\'': True,/g' /opt/stack/horizon/openstack_dashboard/local/local_settings.py
 sudo service apache2 reload
 
+# Install and enable Heat Dashboard
+
+sudo pip install heat-dashboard
+cp /usr/local/lib/python2.7/dist-packages/heat_dashboard/enabled/_[1-9]*.py /opt/stack/horizon/openstack_dashboard/local/enabled
+cat <<- EOF >> /opt/stack/horizon/openstack_dashboard/local/local_settings.py
+POLICY_FILES = {
+    'identity': 'keystone_policy.json',
+    'compute': 'nova_policy.json',
+    'volume': 'cinder_policy.json',
+    'image': 'glance_policy.json',
+    'network': 'neutron_policy.json',
+    'orchestration': '/usr/local/lib/python2.7/dist-packages/heat_dashboard/conf/heat_policy.json',
+}
+EOF
+cd /opt/stack/horizon
+python manage.py compilemessages
+DJANGO_SETTINGS_MODULE=openstack_dashboard.settings python manage.py collectstatic --noinput
+DJANGO_SETTINGS_MODULE=openstack_dashboard.settings python manage.py compress --force
+sudo service apache2 restart
+
 echo "You can access Horizon Dashboard at External IP address: http://$externalip/dashboard"
