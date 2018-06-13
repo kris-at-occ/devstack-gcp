@@ -40,6 +40,7 @@ EOF
 
 # Install and enable Heat Dashboard
 
+echo "Installing and enabling Heat Dashboard in Horizon"
 sudo pip install heat-dashboard
 cp /usr/local/lib/python2.7/dist-packages/heat_dashboard/enabled/_[1-9]*.py /opt/stack/horizon/openstack_dashboard/local/enabled
 cat <<- EOF >> /opt/stack/horizon/openstack_dashboard/local/local_settings.py
