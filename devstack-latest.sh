@@ -31,6 +31,9 @@ SWIFT_REPLICAS=1
 SWIFT_DATA_DIR=$DEST/data/swift
 # Enable Cinder Backup
 enable_service c-bak
+# Enable Telemetry
+enable_plugin gnocchi https://github.com/openstack/gnocchi master
+enable_plugin ceilometer
 EOF
 
 ./stack.sh
