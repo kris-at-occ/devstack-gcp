@@ -20,19 +20,22 @@ In Compute Engine Create a new VM
 
 Open SSH console and clone this repo:
 
-git clone https://github.com/kris-at-occ/devstack-gcp
 
-Run script to install Devstack COA Lab:
+`git clone https://github.com/kris-at-occ/devstack-gcp`
 
-sh devstack-gcp/devstack-coa.sh
+
 
 Run script to install Devstack with Pike:
 
-sh devstack-gcp/devstack-pike.sh
+
+`sh devstack-gcp/devstack-pike.sh`
+
 
 Run script to install Devstack with latest master:
 
-sh devstack-gcp/devstack-latest.sh
+
+`sh devstack-gcp/devstack-latest.sh`
+
 
 The script displays Horizon Dashboard URL in the very last line of the output.
 
