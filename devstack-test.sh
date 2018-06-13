@@ -40,6 +40,10 @@ EOF
 
 ./stack.sh
 
+if [ $? -ne 0 ]; then
+  exit $?
+fi
+
 # Install and enable Heat Dashboard
 
 echo "Installing and enabling Heat Dashboard in Horizon"
