@@ -33,7 +33,7 @@ SWIFT_DATA_DIR=$DEST/data/swift
 enable_service c-bak
 # Enable Telemetry
 enable_plugin gnocchi https://github.com/openstack/gnocchi master
-enable_plugin ceilometer
+enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
 EOF
 
 ./stack.sh
