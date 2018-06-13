@@ -32,7 +32,6 @@ SWIFT_DATA_DIR=$DEST/data/swift
 # Enable Cinder Backup
 enable_service c-bak
 # Enable Telemetry
-CEILOMETER_BACKEND=mongodb
 enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
 enable_plugin aodh https://git.openstack.org/openstack/aodh
 enable_plugin gnocchi https://github.com/gnocchixyz/gnocchi stable/4.0
