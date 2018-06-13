@@ -18,7 +18,8 @@ In Compute Engine Create a new VM
 - Firewall: Allow HTTP and HTTPS traffic
 - SSH Key (if you like)
 
-Open SSH console and clone this repo:
+Open SSH console and run `screen` to help you get back the session when SSH conection gets lost (reestablish ssh and run `screen -r`),
+clone this repo:
 
 
 `git clone https://github.com/kris-at-occ/devstack-gcp`
